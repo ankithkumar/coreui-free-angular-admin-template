@@ -32,9 +32,9 @@ export class WebSdkService {
     this.sdkPending = true;
     const connectionPromise = new Promise<boolean>((resolve, reject) => {
       try {
-        Hansel.initialize(this.appMetadata.prod.appId, this.appMetadata.prod.appKey, () => {
+        Hansel.initialize(this.appMetadata.stage.appId, this.appMetadata.stage.appKey, () => {
           this.sdkPending = false;
-          console.log('sdk init!!', Hansel);
+          console.log('sdk init with stage', Hansel);
           resolve(this.sdkReady);
         });
       } catch (error) {

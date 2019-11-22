@@ -22,6 +22,7 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('this is updated one!!!');
     this.setEventListFromLocalStorage();
   }
 
