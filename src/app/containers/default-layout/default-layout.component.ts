@@ -73,7 +73,7 @@ export class DefaultLayoutComponent implements OnInit {
     const eventData = {
       name: this.name,
       vendor: this.vendor,
-      properties: JSON.stringify(propObj)
+      properties: propObj
     };
     if (this.doesValueExist(eventData)) {
       return;
@@ -110,40 +110,4 @@ export class DefaultLayoutComponent implements OnInit {
       this.webSdkService.logEvent(event);
     }, 1000);
   }
-
-  // trackEvent = function (name, vendor, properties) {
-  //   var propObj;
-  //   if (properties) {
-  //     try {
-  //       propObj = JSON.parse(properties);
-  //       if (typeof propObj != 'object') {
-  //         alert('Not a validate JSON object');
-  //         return;
-  //       }
-  //     } catch (e) {
-  //       alert(e);
-  //       return;
-  //     }
-  //   }
-
-  // if (Hansel.isUsedInMap(name, vendor, propObj)) {
-  //   var getHanselData = Hansel.getHanselData(name, vendor, propObj);
-  //   if (!propObj) {
-  //     propObj = {};
-  //   }
-
-  //   // recording internal event fired - start
-  //   var ev = {
-  //     name: name,
-  //     vendor: vendor,
-  //     attr: getHanselData
-  //   };
-  //   var internalEvents = JSON.parse(localStorage.getItem('hsl_internal_events'));
-  //   internalEvents[name] = (ev);
-  //   localStorage.setItem('hsl_internal_events', JSON.stringify(internalEvents));
-  //   $scope.interEvents = JSON.parse(localStorage.getItem('hsl_internal_events'));
-  // } else {
-  //   alert(name, 'is not tracked with an Journey');
-  // }
-  // };
 }
