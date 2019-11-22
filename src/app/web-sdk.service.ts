@@ -89,6 +89,6 @@ export class WebSdkService {
 
   logEvent(event) {
     console.log('logging event!!', event);
-    Hansel.logEvent(event);
+    Hansel.logEvent(event.name, event.vendor, event.properties);
   }
 }

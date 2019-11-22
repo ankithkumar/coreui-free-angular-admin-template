@@ -2,7 +2,8 @@ import { navItems } from '../../_nav';
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { WebSdkService } from '../../web-sdk.service';
-import { isEqual } from 'lodash';
+import { isEqual, cloneDeep } from 'lodash';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
@@ -73,7 +74,7 @@ export class DefaultLayoutComponent implements OnInit {
     const eventData = {
       name: this.name,
       vendor: this.vendor,
-      properties: propObj
+      properties: this.properties
     };
     if (this.doesValueExist(eventData)) {
       return;
@@ -87,7 +88,7 @@ export class DefaultLayoutComponent implements OnInit {
 
   fireEvent(event, index) {
     console.log('this will be fired!! ', event);
-    let propObj;
+    let propObj, eventData;
     try {
       propObj = JSON.parse(event.properties);
       if (typeof propObj !== 'object') {
@@ -99,6 +100,9 @@ export class DefaultLayoutComponent implements OnInit {
       return;
     }
 
+    eventData = cloneDeep(event);
+    eventData.properties = propObj;
+
     // if (!this.doesValueExist(event)) {
     //   this.eventArray[index] = event;
     //   localStorage.setItem('eventList', JSON.stringify(this.eventArray));
@@ -107,7 +111,7 @@ export class DefaultLayoutComponent implements OnInit {
     localStorage.setItem('eventList', JSON.stringify(this.eventArray));
     this.modalRef.hide();
     setTimeout(() => {
-      this.webSdkService.logEvent(event);
+      this.webSdkService.logEvent(eventData);
     }, 1000);
   }
 }
