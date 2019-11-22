@@ -10,9 +10,12 @@ export class WebSdkService {
   private sdkPending: boolean;
   private appMetadata = {
     stage: {
-      appId: 'ZW5GL9L8X9F1CBXO3509IKK6D',
-      appKey: 'D037QVPS2KA71IZ7WGO5I0O84030GVSY7CWOGKU5EWWN2GJS6Q',
-      appName: 'Webv8SDK'
+      // appId: 'ZW5GL9L8X9F1CBXO3509IKK6D',
+      // appKey: 'D037QVPS2KA71IZ7WGO5I0O84030GVSY7CWOGKU5EWWN2GJS6Q',
+      // appName: 'Webv8SDK'
+      appId: 'PB3JA57T67G6NASDYNU478OKV',
+      appKey: 'KTZDJSW5PFRALSBEBWUYEJBR0D8X3L1GYUOLOFHZTP78TSLI9J',
+      appName: 'Githubtestapp'
     },
     prod: {
       appId: 'O0EM52JT2BPOLQLEG2GO2TZOY',
